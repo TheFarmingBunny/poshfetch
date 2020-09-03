@@ -1,4 +1,4 @@
-﻿ if(!$IsWindows -and $PSVersionTable.PSEdition -eq "Core") {
+if(!$IsWindows -and $PSVersionTable.PSEdition -eq "Core") {
     Write-Host -ForegroundColor Red "This script currently only works on Windows 10😔"
     exit 1
 }
