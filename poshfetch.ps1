@@ -78,7 +78,7 @@ if($term -eq "ConHost") {
 } else {
     $line = "🐱‍👤$env:UserName@$env:ComputerName"
 }
-$info = (,$line, "--" * $line.length) + $info
+$info = ,$line, ("--" * $line.length) + $info
 
 $length = 0
 $info[2..($info.length - 1)] | ForEach-Object {
