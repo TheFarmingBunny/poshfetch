@@ -3,8 +3,6 @@ if(!$IsWindows -and $PSVersionTable.PSEdition -eq "Core") {
     exit 1
 }
 
-$info = ,"🐱‍👤$env:UserName@$env:ComputerName"
-$info += "--" * $info[0].length
 $info += ,("OS:", (Get-CimInstance -Class Win32_OperatingSystem).Caption)
 $info += ,("Version:", (Get-ItemPropertyValue -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name ReleaseId))
 $info += ,("Build:", [environment]::OSVersion.Version.Build)
@@ -75,6 +73,7 @@ if($env:WT_SESSION) {
     $term = "Unknown"
 }
 $info += ,("Terminal", $term)
+$info = ,"🐱‍👤$env:UserName@$env:ComputerName", "--" * "🐱‍👤$env:UserName@$env:ComputerName".length + $info
 
 $length = 0
 $info[2..($info.length - 1)] | ForEach-Object {
