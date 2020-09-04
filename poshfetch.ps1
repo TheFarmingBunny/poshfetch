@@ -73,7 +73,12 @@ if($env:WT_SESSION) {
     $term = "Unknown"
 }
 $info += ,("Terminal", $term)
-$info = ,"🐱‍👤$env:UserName@$env:ComputerName", "--" * "🐱‍👤$env:UserName@$env:ComputerName".length + $info
+if($term -eq "ConHost") {
+    $line = "$env:UserName@$env:ComputerName"
+} else {
+    $line = "🐱‍👤$env:UserName@$env:ComputerName"
+}
+$info = ,$line, "--" * $line.length + $info
 
 $length = 0
 $info[2..($info.length - 1)] | ForEach-Object {
